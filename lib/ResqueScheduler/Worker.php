@@ -91,7 +91,9 @@ class ResqueScheduler_Worker
 	 */
 	protected function sleep()
 	{
-		sleep($this->interval);
+	    /** hack for pdffiller */
+		//sleep($this->interval);
+        return true;
 	}
 	
 	/**
