@@ -1,4 +1,10 @@
 <?php
+
+//init before execute resque job
+if (function_exists('init_resque_job')) {
+	init_resque_job();
+}
+
 /**
  * Resque job.
  *
