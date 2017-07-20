@@ -232,7 +232,8 @@ class Resque
 			return false;
 		}
 
-		Resque_Job::create($queue, $class, $args, $trackStatus, $id);
+		$id = Resque_Job::create($queue, $class, $args, $trackStatus, $id);
+
 		Resque_Event::trigger('afterEnqueue', $hookParams);
 
 		return $id;
