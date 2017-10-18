@@ -92,13 +92,14 @@ class Resque
 		return $pid;
 	}
 
-	/**
-	 * Push a job to the end of a specific queue. If the queue does not
-	 * exist, then create it as well.
-	 *
-	 * @param string $queue The name of the queue to add the job to.
-	 * @param array $item Job description as an array to be JSON encoded.
-	 */
+    /**
+     * Push a job to the end of a specific queue. If the queue does not
+     * exist, then create it as well.
+     *
+     * @param string $queue The name of the queue to add the job to.
+     * @param array $item Job description as an array to be JSON encoded.
+     * @return bool
+     */
 	public static function push($queue, $item)
 	{
 		$encodedItem = json_encode($item);
@@ -118,14 +119,14 @@ class Resque
 	 * return it.
 	 *
 	 * @param string $queue The name of the queue to fetch an item from.
-	 * @return array Decoded item from the queue.
+	 * @return array|null Decoded item from the queue.
 	 */
 	public static function pop($queue)
 	{
         $item = self::redis()->lpop('queue:' . $queue);
 
 		if(!$item) {
-			return;
+			return null;
 		}
 
 		return json_decode($item, true);
@@ -178,7 +179,7 @@ class Resque
 	    $item = self::redis()->blpop($list, (int)$timeout);
 
 	    if(!$item) {
-		return;
+		    return null;
 	    }
 
 	    /**
@@ -243,7 +244,7 @@ class Resque
 	 * Reserve and return the next available job in the specified queue.
 	 *
 	 * @param string $queue Queue to fetch next available job from.
-	 * @return Resque_Job Instance of Resque_Job to be processed, false if none or error.
+	 * @return Resque_Job|false Instance of Resque_Job to be processed, false if none or error.
 	 */
 	public static function reserve($queue)
 	{

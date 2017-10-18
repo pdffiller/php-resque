@@ -20,7 +20,7 @@ class Resque_Log extends Psr\Log\AbstractLogger
 	 * @param mixed   $level    PSR-3 log level constant, or equivalent string
 	 * @param string  $message  Message to log, may contain a { placeholder }
 	 * @param array   $context  Variables to replace { placeholder }
-	 * @return null
+	 * @return void
 	 */
 	public function log($level, $message, array $context = array())
 	{
