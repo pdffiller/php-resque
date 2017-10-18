@@ -104,12 +104,13 @@ class Resque_Redis
 	    self::$defaultNamespace = $namespace;
 	}
 
-	/**
-	 * @param string|array $server A DSN or array
-	 * @param int $database A database number to select. However, if we find a valid database number in the DSN the
-	 *                      DSN-supplied value will be used instead and this parameter is ignored.
-	 * @param object $client Optional Credis_Cluster or Credis_Client instance instantiated by you
-	 */
+    /**
+     * @param string|array $server A DSN or array
+     * @param int|null $database A database number to select. However, if we find a valid database number in the DSN the
+     *                      DSN-supplied value will be used instead and this parameter is ignored.
+     * @param object|null $client Optional Credis_Cluster or Credis_Client instance instantiated by you
+     * @throws Resque_RedisException
+     */
     public function __construct($server, $database = null, $client = null)
 	{
 		try {

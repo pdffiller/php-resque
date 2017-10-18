@@ -6,7 +6,7 @@
  * @author		Chris Boulton <chris@bigcommerce.com>
  * @license		http://www.opensource.org/licenses/mit-license.php
  */
-class Resque_Tests_TestCase extends PHPUnit_Framework_TestCase
+class Resque_Tests_TestCase extends PHPUnit\Framework\TestCase
 {
 	protected $resque;
 	protected $redis;

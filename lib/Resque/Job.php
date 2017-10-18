@@ -98,7 +98,7 @@ class Resque_Job
 	 * instance of Resque_Job for it.
 	 *
 	 * @param string $queue The name of the queue to check for a job in.
-	 * @return false|object Null when there aren't any waiting jobs, instance of Resque_Job when a job was found.
+	 * @return false|Resque_Job Null when there aren't any waiting jobs, instance of Resque_Job when a job was found.
 	 */
 	public static function reserve($queue)
 	{
@@ -116,7 +116,7 @@ class Resque_Job
 	 *
 	 * @param array             $queues
 	 * @param int               $timeout
-	 * @return false|object Null when there aren't any waiting jobs, instance of Resque_Job when a job was found.
+	 * @return false|Resque_Job Null when there aren't any waiting jobs, instance of Resque_Job when a job was found.
 	 */
 	public static function reserveBlocking(array $queues, $timeout = null)
 	{

@@ -109,7 +109,7 @@ class Resque_Worker
 	 * Given a worker ID, find it and return an instantiated worker class for it.
 	 *
 	 * @param string $workerId The ID of the worker.
-	 * @return Resque_Worker Instance of the worker. False if the worker does not exist.
+	 * @return Resque_Worker|false Instance of the worker. False if the worker does not exist.
 	 */
 	public static function find($workerId)
 	{
@@ -252,13 +252,13 @@ class Resque_Worker
 	/**
 	 * @param  bool            $blocking
 	 * @param  int             $timeout
-	 * @return object|boolean               Instance of Resque_Job if a job is found, false if not.
+	 * @return Resque_Job|false|null               Instance of Resque_Job if a job is found, false if not.
 	 */
 	public function reserve($blocking = false, $timeout = null)
 	{
 		$queues = $this->queues();
 		if(!is_array($queues)) {
-			return;
+			return null;
 		}
 
 		if($blocking === true) {
@@ -526,7 +526,7 @@ class Resque_Worker
 	/**
 	 * Return an object describing the job this worker is currently working on.
 	 *
-	 * @return object Object with details of current job.
+	 * @return array Object with details of current job.
 	 */
 	public function job()
 	{
