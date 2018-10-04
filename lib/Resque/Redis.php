@@ -5,6 +5,12 @@
  * @package		Resque/Redis
  * @author		Chris Boulton <chris@bigcommerce.com>
  * @license		http://www.opensource.org/licenses/mit-license.php
+ *
+ * @method int llen(string $key)
+ * @method false|string lpop(string $key)
+ * @method false|string rpop(string $key)
+ * @method false|int rpush(string $key, string $value)
+ * @method false|int lpush(string $key, string $value)
  */
 class Resque_Redis
 {
